@@ -15,18 +15,52 @@ Algorithm:
 4.	Exit the program.
  
 Program:
+#include <stdio.h>
 
-//type your code here
+int main() {
+    int n;
+    printf("Enter a number: ");
+    scanf("%d", &n);
 
+    switch(n) {
+        case 5:
+            printf("seventy one\n");
+            break;
+        case 6:
+            printf("seventy two\n");
+            break;
+        case 7:
+            printf("seventy three\n");
+            break;
+        case 8:
+            printf("seventy four\n");
+            break;
+        case 9:
+            printf("seventy five\n");
+            break;
+        case 10:
+            printf("seventy six\n");
+            break;
+        case 11:
+            printf("seventy seven\n");
+            break;
+        case 12:
+            printf("seventy eight\n");
+            break;
+        case 13:
+            printf("seventy nine\n");
+            break;
+        default:
+            printf("greater than 13\n");
+    }
+
+    return 0;
+}
 
 
 
 Output:
-
-
-//paste your output here
-
-
+<img width="471" height="166" alt="image" src="https://github.com/user-attachments/assets/9e8f23f6-df47-4c4d-b306-97aefc19ec0b" />
 
 
 
@@ -46,20 +80,39 @@ Algorithm:
 6.	End
  
 Program:
+#include <stdio.h>
 
-//type your code here
+int main() {
+    char a[50];
+    int i, digit, count;
+    scanf("%s", a);
+
+    for (digit = 0; digit <= 3; digit++)
+    {
+        count = 0;
+        for (i = 0; a[i] != '\0'; i++) 
+        {
+            if (a[i] == digit + '0')
+            {
+                count++;
+            }
+        }
+        printf("%d ", count);
+    }
+
+    for (i = 0; i < 6; i++) {
+        printf("0 ");
+    }
+
+    return 0;
+}
 
 
 
 
 Output:
 
-
-//paste your output here
-
-
-
-
+<img width="423" height="115" alt="image" src="https://github.com/user-attachments/assets/99315281-7e32-4957-b4c4-792cca506bc2" />
 
 
 Result:
@@ -84,15 +137,67 @@ Free the memory allocated for each string in s Free the memory allocated for s
  
 Program:
 
-//type your code here
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int next_permutation(int n, char **s){
+    int k = -1;
+    for (int i = 0; i < n-1; i++){
+        if (strcmp(s[i], s[i+1]) < 0)
+            k = i;
+    }
+    
+    if (k == -1) return 0; 
+
+    int l = -1;
+    for (int i = k+1; i < n; i++) {
+        if (strcmp(s[k], s[i]) < 0)
+            l = i;
+    }
+
+    char *tmp = s[k];
+    s[k] = s[l];
+    s[l] = tmp;
+
+    int i = k+1, j = n-1;
+    while (i < j) {
+        tmp = s[i];
+        s[i++] = s[j];
+        s[j--] = tmp;
+    }
+
+    return 1; 
+}
+
+int main(){
+	char **s;
+	int n;
+	scanf("%d", &n);
+	s = calloc(n, sizeof(char*));
+	for (int i = 0; i < n; i++){
+		s[i] = calloc(11, sizeof(char));
+		scanf("%s", s[i]);
+	}do{
+		for (int i = 0; i < n; i++)
+			printf("%s%c", s[i], i == n - 1 ? '\n' : ' ');
+	} while (next_permutation(n, s));
+	
+	for (int i = 0; i < n; i++)
+		free(s[i]);
+	free(s);
+	return 0;
+}
+
+
 
 
 
 
 Output:
 
+<img width="782" height="316" alt="image" src="https://github.com/user-attachments/assets/472a76b6-5be6-4991-8701-db89c45a1581" />
 
-//paste your output here
 
 
 
@@ -117,19 +222,15 @@ Algorithm:
  
 Program:
 
-//type your code here
+<img width="782" height="316" alt="image" src="https://github.com/user-attachments/assets/60833de7-ac32-4dd7-88f0-d6c5f90b04b1" />
+
 
 
 
 
 Output:
 
-
-//paste your output here
-
-
-
-
+<img width="541" height="370" alt="image" src="https://github.com/user-attachments/assets/40cdb6d9-63cc-4942-b850-b1159bc9a2bf" />
 
 
 Result:
@@ -156,7 +257,22 @@ o	Call the square() function and display the result.
 
 Program:
 
-//type your code here
+#include <stdio.h>
+
+int square()
+{
+    int num;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+    return num * num;
+}
+
+int main() {
+    int result;
+    result = square(); 
+    printf("Square of the number is: %d\n", result);
+    return 0;
+}
 
 
 
@@ -164,12 +280,7 @@ Program:
 Output:
 
 
-//paste your output here
-
-
-
-
-
+<img width="512" height="160" alt="image" src="https://github.com/user-attachments/assets/1471aaa9-9396-4169-8ef8-57b9b69d0293" />
 
 Result:
 Thus, the program is verified successfully
